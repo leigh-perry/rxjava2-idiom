@@ -4,7 +4,6 @@ import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 
 import static io.reactivex.Completable.defer;
-import static io.reactivex.Completable.fromAction;
 import static io.reactivex.schedulers.Schedulers.io;
 import static test.TestUtil.startTest;
 import static test.TestUtil.syncTestOperation;
@@ -19,8 +18,7 @@ public class CompletableTest {
 
         startTest("single");
         final Completable syncOperation =
-            defer(() -> fromAction(() -> syncTestOperation(1, "")))
-                .subscribeOn(scheduler);
+            Completable.fromAction(() -> syncTestOperation(1, ""));
 
         syncOperation
             .subscribeOn(scheduler)
