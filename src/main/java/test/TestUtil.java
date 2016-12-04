@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.function.Function;
 
 import static io.reactivex.Observable.defer;
+import static io.reactivex.Observable.empty;
 import static io.reactivex.Observable.just;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
@@ -67,12 +68,15 @@ public class TestUtil {
         );
     }
 
-    public static void pause(final long millis) {
+    public static boolean pause(final long millis) {
+        final long startMs = System.currentTimeMillis();
         try {
             // NOTE: Only using Thread.sleep here as an artificial demo.
             Thread.sleep(millis);
+            return true;
         } catch (final InterruptedException e) {
-            output("pause interrupted...should have been %s msec", millis);
+            output("pause interrupted after %s of %s msec", System.currentTimeMillis() - startMs, millis);
+            return false;
         }
     }
 
@@ -93,10 +97,15 @@ public class TestUtil {
     }
 
     public static String syncTestOperation(final Integer i, final String prefix, final int msec) {
-        output("                %s%s started", prefix, i);
-        pause(msec);
-        output("                %s%s done", prefix, i);
-        return "result:" + i * 100;
+        final long randomDurationMsec = (long) (Math.random() * msec);
+        output("                %s%s started with duration %s msec", prefix, i, randomDurationMsec);
+
+        if (pause(randomDurationMsec)) {
+            output("                %s%s done", prefix, i);
+            return "result:" + i * 100;
+        } else {
+            return null;
+        }
     }
 
     // the anSWER...
@@ -106,7 +115,7 @@ public class TestUtil {
         return defer(
             () -> {
                 final R value = operation.apply(input);
-                return just(value);
+                return value == null ? empty() : just(value);
             }
         );
     }
@@ -128,7 +137,7 @@ public class TestUtil {
 
     static class CustomisingThreadFactory implements ThreadFactory {
         public CustomisingThreadFactory(final String pattern) {
-            this.name = String.format(pattern, Thread.currentThread().getId());
+            name = String.format(pattern, Thread.currentThread().getId());
         }
 
         @Override

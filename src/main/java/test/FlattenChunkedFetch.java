@@ -14,10 +14,10 @@ import static test.TestUtil.startTest;
 
 public class FlattenChunkedFetch {
     public static void main(final String[] args) {
-        new FlattenChunkedFetch().runAll();
+        new FlattenChunkedFetch().run();
     }
 
-    public void runAll() {
+    public void run() {
         startTest("chunked LP");
         observeAllPersonsLP()
             .blockingSubscribe(p -> output("Person: %s", p));
@@ -71,7 +71,7 @@ public class FlattenChunkedFetch {
         private final Integer id;
 
         public Person(final Integer j) {
-            this.id = j;
+            id = j;
         }
 
         @Override

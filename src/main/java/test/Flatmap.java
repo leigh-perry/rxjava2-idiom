@@ -10,10 +10,10 @@ import static test.TestUtil.stream;
 
 public class Flatmap {
     public static void main(final String[] args) {
-        new Flatmap().runAll();
+        new Flatmap().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = computation();    // io has more threads
 
         startTest("flatmap");

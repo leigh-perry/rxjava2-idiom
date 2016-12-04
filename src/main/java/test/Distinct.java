@@ -10,10 +10,10 @@ import static test.TestUtil.startTest;
 
 public class Distinct {
     public static void main(final String[] args) {
-        new Distinct().runAll();
+        new Distinct().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         final Observable<Integer> observable = just(1, 2, 3, 2, 2, 2, 4, 2, 5);

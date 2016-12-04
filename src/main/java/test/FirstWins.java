@@ -10,10 +10,10 @@ import static test.TestUtil.startTest;
 
 public class FirstWins {
     public static void main(final String[] args) {
-        new FirstWins().runAll();
+        new FirstWins().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("first wins");
@@ -24,7 +24,7 @@ public class FirstWins {
             observeSyncTestOperation(2, "")
                 .subscribeOn(scheduler);
 
-        String s = syncOperation1
+        final String s = syncOperation1
             .mergeWith(syncOperation2)
             .firstElement()
             .subscribeOn(scheduler)

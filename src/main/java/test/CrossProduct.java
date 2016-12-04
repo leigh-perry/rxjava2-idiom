@@ -1,17 +1,15 @@
 package test;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 
-import static io.reactivex.schedulers.Schedulers.io;
 import static test.TestUtil.startTest;
 
 public class CrossProduct {
     public static void main(final String[] args) {
-        new CrossProduct().runAll();
+        new CrossProduct().run();
     }
 
-    public <T> void runAll() {
+    public <T> void run() {
         startTest("cross product using flatMap");
         final Observable<Integer> oneToEight = Observable.range(1, 8);
 

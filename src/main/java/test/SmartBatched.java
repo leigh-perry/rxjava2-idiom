@@ -15,10 +15,10 @@ import static test.TestUtil.stream;
 
 public class SmartBatched {
     public static void main(final String[] args) {
-        new SmartBatched().runAll();
+        new SmartBatched().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("smart-batched");

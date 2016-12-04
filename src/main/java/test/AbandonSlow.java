@@ -15,10 +15,10 @@ import static test.TestUtil.syncTestOperation;
 
 public class AbandonSlow {
     public static void main(final String[] args) {
-        new AbandonSlow().runAll();
+        new AbandonSlow().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("request alternative on timeout");
@@ -37,6 +37,3 @@ public class AbandonSlow {
             .blockingSubscribe(s -> output("                                " + s));
     }
 }
-
-
-

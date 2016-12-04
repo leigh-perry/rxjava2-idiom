@@ -11,10 +11,10 @@ import static test.TestUtil.startTest;
 
 public class DelayUsingTimer {
     public static void main(final String[] args) {
-        new DelayUsingTimer().runAll();
+        new DelayUsingTimer().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("delay -> timer");

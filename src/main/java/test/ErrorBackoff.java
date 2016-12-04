@@ -16,10 +16,10 @@ import static test.TestUtil.pause;
 
 public class ErrorBackoff {
     public static void main(final String[] args) {
-        new ErrorBackoff().runAll();
+        new ErrorBackoff().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
         Integer result;
 
@@ -74,7 +74,7 @@ public class ErrorBackoff {
         startCounting();
     }
 
-    private volatile int count = 0;
+    private volatile int count;
 
     private void startCounting() {
         count = 0;
@@ -91,7 +91,7 @@ public class ErrorBackoff {
                 output("started sync operation");
                 pause(300);
                 output("%s", DELIBERATE_EXCEPTION);
-                throw (new RuntimeException(DELIBERATE_EXCEPTION));
+                throw new RuntimeException(DELIBERATE_EXCEPTION);
             }
         });
     }

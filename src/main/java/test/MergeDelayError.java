@@ -14,10 +14,10 @@ import static test.TestUtil.startTest;
 
 public class MergeDelayError {
     public static void main(final String[] args) {
-        new MergeDelayError().runAll();
+        new MergeDelayError().run();
     }
 
-    public <T> void runAll() {
+    public <T> void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("merge with delay errors");

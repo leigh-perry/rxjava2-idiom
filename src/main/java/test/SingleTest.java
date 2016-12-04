@@ -12,10 +12,10 @@ import static test.TestUtil.syncTestOperation;
 
 public class SingleTest {
     public static void main(final String[] args) {
-        new SingleTest().runAll();
+        new SingleTest().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("single");

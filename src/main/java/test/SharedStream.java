@@ -12,10 +12,10 @@ import static test.TestUtil.stream;
 
 public class SharedStream {
     public static void main(final String[] args) {
-        new SharedStream().runAll();
+        new SharedStream().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("concat");

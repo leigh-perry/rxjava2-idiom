@@ -14,10 +14,10 @@ import static test.TestUtil.startTest;
 
 public class Fallback {
     public static void main(final String[] args) {
-        new Fallback().runAll();
+        new Fallback().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("fallback on timeout");
@@ -43,7 +43,7 @@ public class Fallback {
 
         startTest("simple fallback a");
         if (true) {
-            String s =
+            final String s =
                 syncOperation1
                     .concatWith(syncOperation2)
                     .firstElement()    // o2 should never subscribe
@@ -54,7 +54,7 @@ public class Fallback {
 
         startTest("simple fallback b");
         if (true) {
-            String s =
+            final String s =
                 Observable.<String>empty()
                     .concatWith(syncOperation2)
                     .firstElement()    // o2 should subscribe this time
@@ -64,6 +64,3 @@ public class Fallback {
         }
     }
 }
-
-
-

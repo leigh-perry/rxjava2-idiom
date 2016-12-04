@@ -10,10 +10,10 @@ import static test.TestUtil.stream;
 
 public class ScatterGroupBy {
     public static void main(final String[] args) {
-        new ScatterGroupBy().runAll();
+        new ScatterGroupBy().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = computation();    // io has more threads
 
         startTest("scatter groupby");

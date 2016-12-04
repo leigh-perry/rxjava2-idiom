@@ -9,10 +9,10 @@ import static test.TestUtil.startTest;
 
 public class TrampolineScheduler {
     public static void main(final String[] args) {
-        new TrampolineScheduler().runAll();
+        new TrampolineScheduler().run();
     }
 
-    public <T> void runAll() {
+    public <T> void run() {
         startTest("trampoline");
         test(Schedulers.trampoline());
     }

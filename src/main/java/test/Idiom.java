@@ -28,10 +28,10 @@ public class Idiom {
     public static final String DELIBERATE_EXCEPTION = "Deliberate exception";
 
     public static void main(final String[] args) {
-        new Idiom().runAll();
+        new Idiom().run();
     }
 
-    public void runAll() {
+    public void run() {
         final BiFunction<String, String, String> concat = (a, b) -> a + " / " + b;
 
         // TODO
@@ -137,7 +137,7 @@ public class Idiom {
             run("buffer count/time", streamA(20).buffer(300, TimeUnit.MILLISECONDS, 3));
             run("buffer time", streamA(20).buffer(200, TimeUnit.MILLISECONDS));
             run("buffer count", streamA(20).buffer(4));
-            run("amb", ambArray(streamA(), (streamB())));
+            run("amb", ambArray(streamA(), streamB()));
             run("reduce", streamA(10).reduce(concat).toObservable());
             run("debounce msec == throttleWithTimeout", streamA(30).debounce(50, TimeUnit.MILLISECONDS));
             run("scan", streamA(10).scan(concat));

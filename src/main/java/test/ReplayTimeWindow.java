@@ -14,7 +14,7 @@ public class ReplayTimeWindow {
     private final long startTime = System.currentTimeMillis();
 
     public static void main(final String[] args) {
-        new ReplayTimeWindow().runAll();
+        new ReplayTimeWindow().run();
     }
 
     static final int b = 2;
@@ -28,7 +28,7 @@ public class ReplayTimeWindow {
     }
 
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();
 
         class Event {
@@ -37,7 +37,7 @@ public class ReplayTimeWindow {
 
             public Event(final long seq) {
                 this.seq = seq;
-                this.creationEpoch = System.currentTimeMillis();
+                creationEpoch = System.currentTimeMillis();
             }
 
             @Override
@@ -55,7 +55,7 @@ public class ReplayTimeWindow {
 
         final ConnectableObservable<Event> replayable =
             Observable.interval(50 * multiplier, TimeUnit.MILLISECONDS)
-                .map((seq) -> new Event(seq))
+                .map(seq -> new Event(seq))
                 //.doOnEach(n -> System.out.println(record("-----Replayable %s-----", n.getValue())))
                 .subscribeOn(scheduler)
                 .replay(window, TimeUnit.MILLISECONDS, scheduler);

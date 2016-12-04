@@ -15,12 +15,12 @@ import static test.TestUtil.syncTestOperation;
 
 public class CancelSlowOnNew {
     public static void main(final String[] args) {
-        new CancelSlowOnNew().runAll();
+        new CancelSlowOnNew().run();
     }
 
     // TODO finish
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
 

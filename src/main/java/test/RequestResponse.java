@@ -9,10 +9,10 @@ import static test.TestUtil.startTest;
 
 public class RequestResponse {
     public static void main(final String[] args) {
-        new RequestResponse().runAll();
+        new RequestResponse().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = computation();    // io has more threads
 
         startTest("request-response");

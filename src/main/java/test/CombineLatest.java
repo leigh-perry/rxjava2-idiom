@@ -11,10 +11,10 @@ import static test.TestUtil.startTest;
 
 public class CombineLatest {
     public static void main(final String[] args) {
-        new CombineLatest().runAll();
+        new CombineLatest().run();
     }
 
-    public <T> void runAll() {
+    public <T> void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("combineLatest");

@@ -12,10 +12,10 @@ import static test.TestUtil.stream;
 
 public class ScatterMapMerge {
     public static void main(final String[] args) {
-        new ScatterMapMerge().runAll();
+        new ScatterMapMerge().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = computation();    // io has more threads
 
         startTest("scatter map merge");

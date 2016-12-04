@@ -10,10 +10,10 @@ import static test.TestUtil.syncTestOperation;
 
 public class CompletableTest {
     public static void main(final String[] args) {
-        new CompletableTest().runAll();
+        new CompletableTest().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("single");

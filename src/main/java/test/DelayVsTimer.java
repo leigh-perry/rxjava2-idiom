@@ -12,10 +12,10 @@ import static test.TestUtil.startTest;
 
 public class DelayVsTimer {
     public static void main(final String[] args) {
-        new DelayVsTimer().runAll();
+        new DelayVsTimer().run();
     }
 
-    public void runAll() {
+    public void run() {
         final Scheduler scheduler = io();    // io has more threads
 
         startTest("timer delay first");
